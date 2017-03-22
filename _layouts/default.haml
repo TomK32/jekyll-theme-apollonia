@@ -24,17 +24,13 @@
     %nav
       .inner
         {% if show_navigation != false %}
-        %nav
-          %ul
-            {% for p in site.pages %}
-            {% if p.parent == nil or p.parent != page.id %}
-            {% if page.title != nil %}
-
-            %li
-              %a{href: "{{ p.url }}"} {{ p.title }}
-            {% endif %}
-            {% endif %}
-            {% endfor %}
+        %ul
+          {% for p in site.pages %}
+          {% if p.title and p.parent == nil or p.parent != page.id %}
+          %li
+            %a{href: "{{ p.url }}"} {{ p.title }}
+          {% endif %}
+          {% endfor %}
         {% endif %}
     #content
       .inner
